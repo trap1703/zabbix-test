@@ -1,0 +1,4 @@
+[test_ubuntu]
+#test-host-01 ansible_host=192.168.1.130
+#test-host-02 ansible_host=192.168.1.131
+test-host-03 ansible_host=192.168.1.132
