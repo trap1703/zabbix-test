@@ -19,6 +19,7 @@
 2. test-host-01 - хост для мониторинга ubuntu 20.04 server
 3. test-host-02 - хост для мониторинга ubuntu 20.04 server
 4. test-host-03 - хост для мониторинга ubuntu 20.04 server
+
 Шаблон с параметром и графиком создан руками (Template string log file.xml)
 
 Создан ansible playbook zabbix-play.yaml
