@@ -18,3 +18,18 @@
 2. test-host-01 - хост для мониторинга ubuntu 20.04 server
 3. test-host-02 - хост для мониторинга ubuntu 20.04 server
 4. test-host-03 - хост для мониторинга ubuntu 20.04 server
+Шаблон с параметром и графиком создан руками (Template string log file.xml)
+
+Создан ansible playbook zabbix-play.yaml
+состоит из двух ролей
+dj-wasabi.zabbix-agent (https://github.com/dj-wasabi/ansible-zabbix-agent) переработанно для данной задачи
+- устанавливает zabix-agent с настройкой zabbix_conf
+- добавляет хост в zabbix server
+- добавляет к хосту шаблоны
+copy.scrypt самодельный
+- копирует файл скрипта на хост 
+- добавляет пользователя zabbix в группу adm
+- добавляет возможность запуска команд от пользователя zabbix без ввода пароля с повышенными правами
+- перезапускает zabbix agent
+
+скрины результата работы и файл шаблона в папке addons
