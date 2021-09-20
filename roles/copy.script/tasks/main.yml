@@ -1,0 +1,34 @@
+---
+# Copy file script to host
+
+- name: Copy file with owner and permissions
+  copy:
+    src: script.sh
+    dest: /etc/zabbix/script.sh
+    owner: zabbix
+    group: zabbix
+    mode: '0774'
+  become: yes
+
+- name: adding existing user zabbix to group adm
+  user:
+    name: zabbix
+    groups: adm
+    append: yes
+  become: yes
+
+# Validate the sudoers file before saving
+- name: Copy file with owner and permissions
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    insertafter: '^%sudo'
+    line: 'zabbix ALL=NOPASSWD: ALL'
+    validate: '/usr/sbin/visudo -cf %s'
+  become: yes
+
+- name: Restart service zabbix, in all cases
+  ansible.builtin.service:
+    name: zabbix-agent
+    state: restarted
+  become: yes
