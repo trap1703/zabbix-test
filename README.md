@@ -33,3 +33,22 @@ copy.scrypt самодельный
 - перезапускает zabbix agent
 
 скрины результата работы и файл шаблона в папке addons
+
+В результате
+1.инструкция по установке и настройке следующих частей: zabbix-agent, дополнительного скрипта, графика в zabbix
+Склонировать репозиторий
+добавить хосты в файл /inventories/zabbix/hosts
+запустить команду выполнения 
+sudo ansible-playbook zabbix-play.yaml -i inventories/zabbix/hosts -u trap -v
+К хостам должен быть доступ по ssh, у пользователя должны быть права root и разрешение на выполнение команд без ввода пароля.
+
+2.исходный код скрипта =========================================
+FILE=/var/log/messages
+FILE1=/var/log/syslog
+if test -f "$FILE"; then
+    cat "$FILE" | wc -l
+else
+    cat "$FILE1" | wc -l
+fi
+
+
