@@ -50,17 +50,11 @@ sudo ansible-playbook zabbix-play.yaml -i inventories/zabbix/hosts -u trap -v
 2.исходный код скрипта =========================================
 
 FILE=/var/log/messages
-
 FILE1=/var/log/syslog
-
 if test -f "$FILE"; then
-
-    cat "$FILE" | wc -l
-    
+    cat "$FILE" | wc -l    
 else
-
-    cat "$FILE1" | wc -l
-    
+    cat "$FILE1" | wc -l    
 fi
 
 https://github.com/trap1703/zabbix-test/blob/main/roles/copy.script/files/script.sh
